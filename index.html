@@ -1,6 +1,6 @@
 <html>
 <body>
-  <p>text</p>
+  <span id="view-clock"></span>
 </body>
 <style>
 body{
@@ -15,7 +15,7 @@ html{
   align-items: center;
 }
 
-p{
+span{
   background: transparent;
   font-family: futura,sans-serif;
   font-size: 52px;
@@ -25,3 +25,24 @@ p{
   text-shadow: 0 0 30px #21cbff;
 }
   </style>
+  <script>
+timerID = setInterval('clock()',500); //0.5秒毎にclock()を実行
+
+function clock() {
+	document.getElementById("view_clock").innerHTML = getNow();
+}
+
+function getNow() {
+	var now = new Date();
+	var year = now.getFullYear();
+	var mon = now.getMonth()+1; //１を足すこと
+	var day = now.getDate();
+	var hour = now.getHours();
+	var min = now.getMinutes();
+	var sec = now.getSeconds();
+
+	//出力用
+	var s = hour + "時" + min + "分" + sec + "秒"; 
+	return s;
+}
+  </script>
